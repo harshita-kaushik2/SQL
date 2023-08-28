@@ -39,10 +39,8 @@ Output:
 +------+
 
 
-Error I made : 
-```sql
-SELECT name FROM Customer WHERE referee_id != 2;
-```
+Error I made : SELECT name FROM Customer WHERE referee_id != 2;
+
 However, this query will only return one result:Zack although there are 4 customers not referred by Jane (including Jane herself). All the customers who were referred by nobody at all (NULL value in the referee_id column) don’t show up. But why?
 
 ===> Algorithm
@@ -51,7 +49,5 @@ MySQL uses three-valued logic -- TRUE, FALSE and UNKNOWN. Anything compared to N
 
 Thus, one more condition 'referee_id IS NULL' should be added to the WHERE clause as below.
 
-Correct Answer : 
-```sql
-SELECT name FROM Customer WHERE referee_id != 2 OR referee_id IS NULL;
-```
+Correct Answer : SELECT name FROM Customer WHERE referee_id != 2 OR referee_id IS NULL;
+
