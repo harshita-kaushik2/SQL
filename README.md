@@ -1,5 +1,5 @@
 # SQL
-A repository meant to store things I have learn about SQL via practice. 
+
 
 ## Primary Key 
 Unique values for each row of the column and value cannot be NULL.
@@ -54,7 +54,7 @@ FROM tables
 ```
 
 ## WHERE Clause
-Used to add conditions for filtering in Select statement. 
+Used to add conditions for filtering in Select statement. It can be used with SELECT, UPDATE, DELETE statements. 
 ```sql
 SELECT * FROM students WHERE marks >= 80 AND city="Lucknow";
 SELECT * FROM students WHERE marks >= 80 OR city="Lucknow";
@@ -69,7 +69,78 @@ SELECT * FROM students WHERE marks >= 80 LIMIT 3;   /* prints only 3 rows */
 ```
 
 ## Order
-Sort data in ascending or descending order.
+Sort data in ascending or descending order. If no keyword is specified after the column based on which we have to sort the records, in that case, the sorting will be done by default in the ascending order.
 ```sql
-
+SELECT ColumnName1,...,ColumnNameN FROM TableName  ORDER BY ColumnName ASC; 
+SELECT ColumnName1,...,ColumnNameN FROM TableName  ORDER BY ColumnName DESC;  
+SELECT ColumnName1,...,ColumnNameN FROM TableName  ORDER BY ColumnName;    /* if not mentioned ASC/DESC default ASC */
 ```
+
+## Aggregate Function
+Used to perform the calculations on multiple rows of a single column of a table. It returns a single value.
+
+### Count
+```sql
+SELECT COUNT(*) FROM PRODUCT_MAST WHERE RATE>=20; 
+
+SELECT COMPANY, COUNT(*) FROM PRODUCT_MAST GROUP BY COMPANY;  
+Output:
+Com1    5
+Com2    3
+Com3    2
+
+SELECT COMPANY, COUNT(*) FROM PRODUCT_MAST GROUP BY COMPANY COUNT(*)>2;   
+Output:
+Com1    5
+Com2    3
+```
+
+### Sum
+```sql
+SELECT SUM(COST) FROM PRODUCT_MAST WHERE QTY>3;  
+```
+### Avg
+```sql
+SELECT AVG(COST) FROM PRODUCT_MAST;  
+```
+
+### Min and Max
+ 
+```sql
+SELECT MIN(RATE) FROM PRODUCT_MAST;  
+SELECT MAX(RATE) FROM PRODUCT_MAST;  
+```
+
+## Group By Clause
+Jo jo element likha hai for Select woh saare use karne hain for Group By, warna error. 
+```sql
+SELECT city AVG(marks) FROM student GROUP BY city;
+```
+
+## Having Clause
+HAVING Clause is used to filter the records from the groups based on the given condition in the HAVING Clause. Those groups who will satisfy the given condition will appear in the final result. HAVING Clause can only be used with SELECT statement.
+
+```sql
+SELECT Age, COUNT(Roll_No) AS No_of_Students 
+FROM Student GROUP BY Age
+HAVING COUNT(Roll_No) > 1 
+```
+
+#### Difference between WHERE and HAVING
+- WHERE Clause is used to filter the records from the table based on the specified condition.	
+- HAVING Clause is used to filter record from the groups based on the specified condition.
+
+- WHERE Clause can be used without GROUP BY Clause	
+- HAVING Clause cannot be used without GROUP BY Clause
+
+- WHERE Clause implements in row operations	
+- HAVING Clause implements in column operation
+
+- WHERE Clause cannot contain aggregate function
+- HAVING Clause can contain aggregate function
+
+- WHERE Clause can be used with SELECT, UPDATE, DELETE statement.	
+- HAVING Clause can only be used with SELECT statement.
+
+- WHERE Clause is used before GROUP BY Clause	
+- HAVING Clause is used after GROUP BY Clause
