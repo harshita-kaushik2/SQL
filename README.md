@@ -127,20 +127,14 @@ HAVING COUNT(Roll_No) > 1
 ```
 
 #### Difference between WHERE and HAVING
-- WHERE Clause is used to filter the records from the table based on the specified condition.	
-- HAVING Clause is used to filter record from the groups based on the specified condition.
+- WHERE Clause is used to filter the records from the table based on the specified condition. HAVING Clause is used to filter record from the groups based on the specified condition.
 
-- WHERE Clause can be used without GROUP BY Clause	
-- HAVING Clause cannot be used without GROUP BY Clause
+- WHERE Clause can be used without GROUP BY Clause. HAVING Clause cannot be used without GROUP BY Clause
 
-- WHERE Clause implements in row operations	
-- HAVING Clause implements in column operation
+- WHERE Clause implements in row operations. HAVING Clause implements in column operation
 
-- WHERE Clause cannot contain aggregate function
-- HAVING Clause can contain aggregate function
+- WHERE Clause cannot contain aggregate function. HAVING Clause can contain aggregate function
 
-- WHERE Clause can be used with SELECT, UPDATE, DELETE statement.	
-- HAVING Clause can only be used with SELECT statement.
+- WHERE Clause can be used with SELECT, UPDATE, DELETE statement. HAVING Clause can only be used with SELECT statement.
 
-- WHERE Clause is used before GROUP BY Clause	
-- HAVING Clause is used after GROUP BY Clause
+- WHERE Clause is used before GROUP BY Clause. HAVING Clause is used after GROUP BY Clause
