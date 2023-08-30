@@ -138,3 +138,63 @@ HAVING COUNT(Roll_No) > 1
 - WHERE Clause can be used with SELECT, UPDATE, DELETE statement. HAVING Clause can only be used with SELECT statement.
 
 - WHERE Clause is used before GROUP BY Clause. HAVING Clause is used after GROUP BY Clause
+
+## General Order
+SELECT column(s)
+FROM table_name
+WHERE condition
+GROUP BY column(s)
+HAVING condition
+ORDER BY colum(s) ASC;
+
+## Update 
+SET SQL_SAFE_UPDATES = 0;
+```sql
+UPDATE table_name
+SET grade = "O"
+WHERE grade = "A";
+```
+
+## DELETE 
+To delete existing rows.
+```
+DELETE FROM table_name
+WHERE condition;
+```
+
+## Foreign Key
+
+## Cascading for Foreign Key
+### ON DELETE CASCADE
+When we create a foreign key using this option, it deletes the referencing rows in the child table when the referenced row is deleted in the parent table which has a primary key.
+### ON UPDATE CASCADE 
+When we create a foreign key using UPDATE CASCADE the referencing rows are updated in the table when the referenced row is updated in the parent table which has a primary key.
+
+```
+CREATE TABLE teacher (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    dept_id INT,
+    FOREIGN KEY (dep_id) REFERENCES dept(id)
+    ON UPADTE CASCADE
+    ON DELETE CASCADE
+);
+```
+## Alter 
+Used to change the schema of the database
+### ADD Column
+```
+ALTER TABLE table_name
+ADD COLUMN column_name datatype constraint;
+```
+### DROP Column
+```
+ALTER TABLE table_name
+DROP COLUMN column_name;
+```
+### RENAME Table
+
+```
+ALTER TABLE table_name
+RENAME TO new_table_name;
+```
